@@ -1,17 +1,14 @@
 const { Router } = require('express');
 const router = Router();
 
-// Health check — sirve para verificar que el servidor responde
+const authRoutes       = require('./auth');
+const candidatosRoutes = require('./candidatos');
+
 router.get('/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    message: 'API de Voto Electrónico funcionando',
-    timestamp: new Date().toISOString(),
-  });
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Aquí iremos montando las rutas conforme avancemos
-// router.use('/candidatos', candidatosRouter);
-// router.use('/auth', authRouter);
+router.use('/auth', authRoutes);
+router.use('/candidatos', candidatosRoutes);
 
 module.exports = router;
