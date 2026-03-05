@@ -13,6 +13,8 @@ DB_CONFIG = {
     'user':        os.getenv('DB_USER', 'root'),
     'password':    os.getenv('DB_PASSWORD', ''),
     'db':          os.getenv('DB_NAME', 'voto_electronico'),
+    'charset':     'utf8mb4',
+    'autocommit':  True,
     'cursorclass': pymysql.cursors.DictCursor
 }
 
@@ -32,7 +34,7 @@ class ValidadorVotanteService(ServiceBase):
     # ---------------------------------------------------------
     @rpc(Unicode, Unicode, _returns=RespuestaValidacion)
     def validar_votante(ctx, cedula, eleccion_id):
-        conn = pymysql.connect(**DB_CONFIG)
+        conn = pymysql.connect(**DB_CONFIG, autocommit=True)
         try:
             with conn.cursor() as cursor:
                 cursor.execute(

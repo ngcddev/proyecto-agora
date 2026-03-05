@@ -6,9 +6,9 @@ const { sequelize } = require('./models/index');
 const routes = require('./routes/index');
 
 const path = require('path');
-app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-
 const app = express();
+
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Middlewares globales
 app.use(cors({

@@ -14,7 +14,7 @@ async function seed() {
       password: 'Admin1234!',
       rol: 'superadmin',
     });
-    console.log('✅ Admin creado  →  admin@voto.com / Admin1234!');
+    console.log('Admin creado  →  admin@voto.com / Admin1234!');
 
     // Elección de prueba
     const eleccion = await Eleccion.create({
@@ -25,7 +25,7 @@ async function seed() {
       estado: 'activa',
       activa: true,
     });
-    console.log('✅ Elección creada');
+    console.log('Elección creada');
 
     // Candidatos de prueba
     await Candidato.bulkCreate([
@@ -59,12 +59,12 @@ async function seed() {
       { cedula: '1007654321', nombre: 'Laura Sánchez Ruiz', email: 'laura@test.com' },
       { cedula: '1009876543', nombre: 'Pedro Jiménez Castro', email: 'pedro@test.com' },
     ]);
-    console.log('✅ Votantes de prueba creados');
+    console.log('Votantes de prueba creados');
 
-    console.log('\n🎉 Seed completado exitosamente');
+    console.log('\nSeed completado exitosamente');
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error en seed:', error.message);
+    console.error('Error en seed:', error.message);
     process.exit(1);
   }
 }

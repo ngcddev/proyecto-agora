@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Variables ─────────────────────────────────────────── */
+:root {
+  --bg:        #1E1D1D;
+  --surface:   #141414;
+  --border:    rgba(255,255,255,0.12);
+  --white:     #FFFFFF;
+  --white-60:  rgba(255,255,255,0.6);
+  --white-20:  rgba(255,255,255,0.2);
+  --accent:    #9B7FFF;   /* Único acento sutil — lila del logo */
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Crimson Pro', Georgia, serif;
+  --font-mono:    'Space Mono', monospace;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius:     4px;
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ── Utility classes ────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Btn outlined (del diseño) ──────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.65rem 1.6rem;
+  border: 1.5px solid var(--white);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+}
+.btn:hover {
+  background: var(--white);
+  color: var(--surface);
+}
+.btn--filled {
+  background: var(--white);
+  color: var(--surface);
+}
+.btn--filled:hover {
+  background: transparent;
+  color: var(--white);
+}
+.btn--sm {
+  font-size: 0.82rem;
+  padding: 0.45rem 1.1rem;
+}
+
+/* ── Form inputs ────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field__label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--white-60);
+  letter-spacing: 0.04em;
+}
+.field__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color var(--transition);
+  width: 100%;
+}
+.field__input::placeholder { color: var(--white-20); }
+.field__input:focus { border-bottom-color: var(--white); }
+
+/* mid-label variant (borde completo + fondo ligero) */
+.field__input--box {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  background: rgba(255,255,255,0.04);
+}
+.field__input--box:focus { border-color: rgba(255,255,255,0.5); }
+
+/* ── Fade-in animation para páginas ────────────────────── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.35s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
